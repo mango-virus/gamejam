@@ -1,11 +1,22 @@
 :root {
-  --bg: #0b0b14;
+  --bg: #120826;
   --fg: #f4f4ff;
-  --muted: #8b8ba7;
-  --accent: #ff4fd8;
-  --accent2: #4ff0ff;
-  --card: #14142a;
-  --border: #2a2a44;
+  --muted: #a89bd1;
+  --accent: #c64bff;
+  --accent2: #ff4fd8;
+  --card: #1c1040;
+  --border: #3a2470;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
 }
 
 * { box-sizing: border-box; }
@@ -20,25 +31,27 @@ html, body {
 }
 
 .hero {
-  padding: 6rem 2rem 3rem;
+  padding: 3rem 2rem 3rem;
   text-align: center;
   background:
-    radial-gradient(ellipse at top, rgba(255,79,216,0.2), transparent 60%),
-    radial-gradient(ellipse at bottom, rgba(79,240,255,0.15), transparent 60%);
+    radial-gradient(ellipse at top, rgba(198,75,255,0.35), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(255,79,216,0.2), transparent 60%);
   border-bottom: 1px solid var(--border);
 }
 
-.hero h1 {
-  font-size: clamp(2.5rem, 6vw, 5rem);
-  margin: 0 0 0.5rem;
-  letter-spacing: -0.02em;
-}
-
-.hero h1 span {
-  background: linear-gradient(90deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.hero .banner {
+  display: block;
+  max-width: min(900px, 92vw);
+  width: 100%;
+  height: auto;
+  margin: 0 auto 1.75rem;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 20px 60px -20px rgba(198, 75, 255, 0.6),
+    0 0 80px -20px rgba(255, 79, 216, 0.45);
 }
 
 .tagline {
