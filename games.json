@@ -29,6 +29,18 @@
       "tags": ["template", "starter", "canvas", "trystero"],
       "status": "ready",
       "multiplayer": true
+    },
+    {
+      "id": "lobby",
+      "title": "The Lobby",
+      "author": "CallumHYoung",
+      "description": "3D hub world with live portals to every jam entry, cute bean avatars, and P2P text chat.",
+      "url": "https://callumhyoung.github.io/gamejam-lobby/",
+      "repo": "CallumHYoung/gamejam-lobby",
+      "type": "3d",
+      "tags": ["hub", "three.js", "trystero", "chat"],
+      "status": "wip",
+      "multiplayer": true
     }
   ]
 }
