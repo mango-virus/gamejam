@@ -7,6 +7,14 @@ A browser game jam where every entry is stitched together by portals. Players tr
 
 This repo is the **registry, build spec, and showcase website**. It is not where games live — each participant hosts their own game in their own repo created from the starter template, and submits a PR here adding themselves to `games.json`.
 
+## Schedule
+
+**Trial run — now → Saturday, Apr 18 @ 9 PM.** Warm-up only. **Do not build your real game yet.** Use this time to get the starter template working, get comfortable building with Claude, mess around, and have fun. Submit something silly.
+
+**The real jam — Sunday, Apr 19 → Sunday, May 10.** Three weeks. The **theme** and **mechanic** will both be revealed when the jam starts. Plan your approach after you see them.
+
+**Competitors (trial run):** Adam · Cal · Jason · Joel · Prez · RJ · *and you!*
+
 ## Participating
 
 → **Start here: [`GETTING_STARTED.md`](GETTING_STARTED.md)** — the full template-to-PR walkthrough.
