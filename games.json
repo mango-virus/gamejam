@@ -10,13 +10,24 @@
       "title": "Example Game",
       "author": "Your Name",
       "description": "One-line pitch people will remember.",
-      "url": "https://yourname.github.io/gamejam/games/example/",
-      "repo": "yourname/gamejam",
+      "url": "https://yourname.github.io/your-game/",
+      "repo": "yourname/your-game",
       "thumbnail": "thumbnails/example.png",
       "type": "3d",
       "tags": ["platformer", "three.js"],
       "status": "wip",
       "multiplayer": false
+    },
+    {
+      "id": "starter",
+      "title": "Starter Demo",
+      "author": "CallumHYoung",
+      "description": "The jam's starter template — a minimal portal-protocol demo you can use this template on.",
+      "url": "https://callumhyoung.github.io/gamejam-starter/",
+      "repo": "CallumHYoung/gamejam-starter",
+      "type": "2d",
+      "tags": ["template", "starter", "canvas"],
+      "status": "ready"
     }
   ]
 }
