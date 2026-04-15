@@ -200,5 +200,48 @@ function escapeHtml(s) {
   }[c]));
 }
 
+function setupMarquee() {
+  const groups = document.querySelectorAll('.marquee-group');
+  if (groups.length === 0) return;
+
+  groups.forEach(group => {
+    Array.from(group.querySelectorAll('[data-marquee-pad]')).forEach(el => el.remove());
+  });
+
+  const firstGroup = groups[0];
+  const originals = Array.from(firstGroup.children);
+  if (originals.length === 0) return;
+
+  const targetWidth = window.innerWidth * 1.15;
+
+  groups.forEach(group => {
+    let safety = 0;
+    while (group.scrollWidth < targetWidth && safety < 40) {
+      originals.forEach(item => {
+        const clone = item.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        clone.setAttribute('data-marquee-pad', 'true');
+        group.appendChild(clone);
+      });
+      safety++;
+    }
+  });
+
+  const track = document.querySelector('.competitors-track');
+  if (track) {
+    const distancePx = firstGroup.scrollWidth;
+    const pxPerSecond = 55;
+    const duration = Math.max(25, Math.min(90, distancePx / pxPerSecond));
+    track.style.animationDuration = `${duration}s`;
+  }
+}
+
+let marqueeResizeTimer;
+window.addEventListener('resize', () => {
+  clearTimeout(marqueeResizeTimer);
+  marqueeResizeTimer = setTimeout(setupMarquee, 150);
+});
+
 loadGames();
 setupRefresh();
+setupMarquee();
