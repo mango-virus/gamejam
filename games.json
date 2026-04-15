@@ -64,7 +64,7 @@
       "description": "First-person 3D void to explore — neon pillars, animated portals, and P2P multiplayer via Trystero.",
       "url": "https://rjprkr-cloud.github.io/RJballs/",
       "repo": "rjprkr-cloud/RJballs",
-      "thumbnail": "thumbnails/rjballs-3d.png",
+      "thumbnail": "https://rjprkr-cloud.github.io/RJballs/thumbnail.png",
       "type": "3d",
       "tags": ["three.js", "first-person", "walking", "multiplayer"],
       "status": "wip",
