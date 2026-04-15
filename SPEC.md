@@ -116,6 +116,61 @@ When `?portal=true` is in the URL:
 
 ---
 
+## Multiplayer (optional)
+
+**You do NOT need a backend for multiplayer.** GitHub Pages (or any static host) serves the HTML/JS, and your game talks directly from the browser to a third-party realtime service over WebSockets or WebRTC. No server to run, no accounts to manage.
+
+The portal protocol already gives you a lightweight form of continuity: `username` and `color` ride along in the URL, so players' identities persist across hops even in single-player games. Full realtime multiplayer is a bonus.
+
+### Recommended: PlayroomKit
+
+Purpose-built for browser games, ~5 lines to get a shared room with synced player state. Free tier covers small jams.
+
+```html
+<script src="https://unpkg.com/playroomkit/multiplayer.umd.js"></script>
+```
+
+```js
+import { insertCoin, myPlayer, onPlayerJoin } from 'playroomkit';
+
+await insertCoin({ skipLobby: true }); // auto-join a room
+
+onPlayerJoin(player => {
+  // spawn a remote avatar for this player
+  const avatar = spawnAvatar(player.id);
+  player.onQuit(() => avatar.destroy());
+  // read shared state
+  player.onState('x', x => avatar.x = x);
+  player.onState('y', y => avatar.y = y);
+});
+
+// in your update loop, publish your own state:
+myPlayer().setState('x', player.x);
+myPlayer().setState('y', player.y);
+```
+
+Read the incoming `username` / `color` from the URL params and pass them via `myPlayer().setState('name', ...)` so other players see them.
+
+### Alternatives
+
+| Service         | Good for                                    | Trade-off                                  |
+| --------------- | ------------------------------------------- | ------------------------------------------ |
+| **PlayroomKit** | Quick jam games, synced state, lobbies      | Vendor lock-in to their API                |
+| **Trystero**    | Zero-cost P2P, no accounts at all           | WebRTC NAT quirks, no authoritative server |
+| **PartyKit**    | Small stateful rooms, Cloudflare edge       | A bit more boilerplate, needs a deploy     |
+| **Firebase**    | Persistence + realtime + auth in one        | Bigger SDK, Google account needed          |
+| **Supabase**    | Postgres + realtime, open-source friendly   | Same as Firebase — project + keys          |
+
+### Portal handoff for multiplayer games
+
+When a player leaves your multiplayer game through a portal, just let them go — don't try to drag them between rooms. The next game spawns them fresh via URL params. If you want the *look* of continuity, fade them out of your scene before the redirect fires.
+
+### Cross-game shared presence (stretch goal, not required)
+
+If you and another jam participant want players in Game A to *see* players currently inside Game B, both games need to connect to the same realtime service with the same room/project credentials. That's a coordination you arrange directly — feel free to pick a service, share a room key in Discord/chat, and wire both games to it. Don't hold up your submission on this; treat it as a fun add-on between specific games.
+
+---
+
 ## Submission checklist
 
 - [ ] Game runs from a single public URL with no install.
@@ -124,6 +179,7 @@ When `?portal=true` is in the URL:
 - [ ] If `ref` is set, shows a return portal / return button.
 - [ ] Entry added to `games.json` via PR with: `id`, `title`, `author`, `description`, `url`, `thumbnail`, `type` (`2d` or `3d`), `tags`.
 - [ ] 256×256 (or larger) thumbnail image committed to `thumbnails/<id>.png`.
+- [ ] (Optional) If multiplayer, add `"multiplayer": true` to your `games.json` entry so the showcase site can badge it.
 
 ---
 
@@ -134,7 +190,8 @@ When `?portal=true` is in the URL:
 > 2. Implements the Portal Protocol exactly as specified (incoming params, outgoing redirect, return portal when `ref` is set).
 > 3. Fetches the jam registry at load to pick portal destinations; falls back to a hardcoded list if fetch fails.
 > 4. Pick a stack and theme, then build something small but fun — favor one polished mechanic over sprawl.
-> 5. Test the portal in/out flow with two fake registry entries before declaring done.
-> 6. When finished, write the `games.json` entry and a short README with the deploy URL.
+> 5. Multiplayer is optional and must use a static-hosting-compatible service (PlayroomKit, Trystero, PartyKit, Firebase, Supabase) — no custom backend. Do not add multiplayer unless you have time after the portal loop works.
+> 6. Test the portal in/out flow with two fake registry entries before declaring done.
+> 7. When finished, write the `games.json` entry and a short README with the deploy URL.
 >
 > Do not skip the portal protocol. It is the whole point of the jam.

@@ -320,6 +320,15 @@ h2 {
   border: 1px solid var(--border);
 }
 
+.card .badge-mp {
+  top: auto;
+  bottom: 0.6rem;
+  right: 0.6rem;
+  color: #4fff9e;
+  border-color: #4fff9e;
+  background: rgba(0,0,0,0.6);
+}
+
 .card .thumb-wrap { position: relative; }
 
 ol { padding-left: 1.25rem; }

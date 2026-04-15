@@ -33,6 +33,13 @@ async function loadGames() {
         thumbWrap.appendChild(badge);
       }
 
+      if (g.multiplayer) {
+        const mp = document.createElement('span');
+        mp.className = 'badge badge-mp';
+        mp.textContent = 'MULTIPLAYER';
+        thumbWrap.appendChild(mp);
+      }
+
       const body = document.createElement('div');
       body.className = 'body';
       body.innerHTML = `
