@@ -71,6 +71,19 @@
       "tags": ["three.js", "first-person", "walking", "multiplayer"],
       "status": "wip",
       "multiplayer": true
+    },
+    {
+      "id": "callumhyoung-fencing-duel",
+      "title": "Fencing Duel",
+      "author": "CallumHYoung",
+      "description": "3D fencing duels — challenge a nearby player, rock-paper-scissors sword fight, first to 3 wins a crown.",
+      "url": "https://callumhyoung.github.io/cal-jam1/",
+      "repo": "CallumHYoung/cal-jam1",
+      "thumbnail": "https://callumhyoung.github.io/cal-jam1/thumbnail.png",
+      "type": "3d",
+      "tags": ["three.js", "3d", "multiplayer", "duel", "fencing", "trystero"],
+      "status": "ready",
+      "multiplayer": true
     }
   ]
 }
