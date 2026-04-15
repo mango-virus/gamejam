@@ -1,120 +1,104 @@
 # Getting Started — Jam Participants
 
-Welcome to the **Ordinary Game Jam #1**. This guide takes you from zero to a live game in the showcase. If you already know your way around forks and PRs, you can skim.
+Welcome to the **Ordinary Game Jam #1**. This guide takes you from zero to a live game card on the showcase. Skim if you already know your way around GitHub templates and PRs.
 
 ---
 
 ## The model in one picture
 
 ```
-              your fork                              main repo
-   github.com/<you>/gamejam  ──── PR (games.json) ──▶ github.com/CallumHYoung/gamejam
-              │                                              │
-              ▼                                              ▼
-  <you>.github.io/gamejam/                    callumhyoung.github.io/gamejam/
-  (hosts YOUR game)                           (the showcase, links to yours)
+        ┌───────────────────────────┐           ┌────────────────────────────────┐
+        │  gamejam-starter (template)│          │  CallumHYoung/gamejam (main)   │
+        │  build spec + portal.js    │          │  registry + showcase site      │
+        └──────────────┬─────────────┘          └────────────────┬───────────────┘
+          "Use this template"                                    │ PR games.json
+                       │                                         │ (web UI, auto-forks)
+                       ▼                                         ▼
+        ┌───────────────────────────┐           ┌────────────────────────────────┐
+        │  <you>/<your-game>        │   link →  │  callumhyoung.github.io/gamejam│
+        │  your game, your repo     │  ◀─────── │  the showcase                  │
+        │  <you>.github.io/<game>/  │           │                                │
+        └───────────────────────────┘           └────────────────────────────────┘
 ```
 
-- **You host your own game** on your fork's GitHub Pages.
-- **You submit a registry entry** (one PR to `games.json`) to the main repo.
-- **Updates to your game** just require pushing to your fork — no new PR needed.
-- **The showcase site** fetches live status from your fork via the GitHub API and shows it on your card.
+**Two repos, two purposes:**
+1. **Your game repo** — created from the starter template. Hosts your game at its own clean URL. You control it entirely.
+2. **The showcase repo** (`CallumHYoung/gamejam`) — the registry (`games.json`), the build spec, the showcase website. You never need to clone this; just open a PR via the GitHub web UI when you're ready to submit.
+
+**Why a template and not a fork?** A fork of the main repo would make your GitHub Pages serve a stale mirror of the showcase instead of your game. The template gives you a clean, independent repo whose Pages deploy hosts *only* your game at `https://<you>.github.io/<your-game>/`.
 
 ---
 
-## 1. Fork the repository
+## 1. Create your game repo from the template
 
-Click **Fork** on https://github.com/CallumHYoung/gamejam. You'll get your own copy at `https://github.com/<your-username>/gamejam`.
+Go to https://github.com/CallumHYoung/gamejam-starter and click the green **"Use this template"** button → **"Create a new repository"**.
 
-## 2. Clone your fork locally
+- **Repository name:** whatever your game is called, kebab-case (e.g. `rocket-racer`).
+- **Owner:** your account.
+- **Visibility:** public (required for GitHub Pages on the free tier).
 
-```bash
-git clone https://github.com/<your-username>/gamejam.git
-cd gamejam
-```
+You now own `github.com/<you>/<your-game>` with the starter's code.
 
-Add the main repo as `upstream` so you can pull in spec updates:
-
-```bash
-git remote add upstream https://github.com/CallumHYoung/gamejam.git
-git remote -v
-# origin    https://github.com/<you>/gamejam.git (fetch/push)
-# upstream  https://github.com/CallumHYoung/gamejam.git (fetch/push)
-```
-
-Pull new spec changes anytime:
+## 2. Clone it locally
 
 ```bash
-git fetch upstream
-git merge upstream/main
+git clone https://github.com/<you>/<your-game>.git
+cd <your-game>
 ```
 
-## 3. Create your game folder
+## 3. Run it locally
 
-Pick a short kebab-case id (e.g. `rocket-racer`) and make a folder:
+Any static file server works:
 
 ```bash
-mkdir -p games/rocket-racer
-cd games/rocket-racer
+python -m http.server 8000
+# open http://localhost:8000
 ```
 
-Everything for your game lives inside that folder — `index.html`, assets, scripts. It must be a fully-static site (no backend).
+You'll see a purple canvas with a moving square and a glowing exit portal. Walk into it — it'll redirect to a random game from the live jam registry. That's the protocol working end-to-end, before you've written a line of code.
 
 ## 4. Build your game
 
-Feed [`SPEC.md`](SPEC.md) from the repo root into your coding agent. The portal protocol is non-negotiable; the rest is your call.
+Feed [`SPEC.md`](SPEC.md) (from the main repo) into your coding agent. Replace `game.js`, `index.html`, and `style.css` with your actual game. **Keep `portal.js` and the `Portal.*` calls** — those are the jam's only hard contract.
 
-**Minimum requirements recap:**
-- Reads URL params `portal`, `username`, `color`, `ref` on load
-- At least one outgoing portal that redirects to another jam game
-- A return portal / back button when `ref` is set
-- Fetches `https://callumhyoung.github.io/gamejam/games.json` for destinations
+Minimum behaviors your game must implement:
+- Read URL params (`portal`, `username`, `color`, `ref`) on load.
+- If `portal=true`, skip menus and spawn the player in.
+- Have at least one outgoing portal that calls `Portal.sendPlayerThroughPortal`.
+- If `ref` is set, draw a return portal / button pointing back to `ref`.
+- Fetch `https://callumhyoung.github.io/gamejam/games.json` to pick destinations (the helper `Portal.pickPortalTarget()` already does this).
 
-Test it locally from the repo root:
+## 5. Deploy
 
-```bash
-cd /path/to/gamejam
-python -m http.server 8000
-# open http://localhost:8000/games/rocket-racer/
-```
-
-## 5. Enable GitHub Pages on your fork
-
-Push your work:
+Push to main:
 
 ```bash
-git add games/rocket-racer
-git commit -m "Add rocket-racer"
+git add .
+git commit -m "Build my game"
 git push
 ```
 
-Then on GitHub:
+Then, the first time only:
 
-1. Go to **Settings → Pages** on your fork (`github.com/<you>/gamejam/settings/pages`).
-2. **Source**: GitHub Actions.
-3. Go to **Actions** tab. If the "Deploy to GitHub Pages" workflow hasn't run yet, click it → **Run workflow** → main.
+1. Go to **Settings → Pages** on your game repo.
+2. **Source:** GitHub Actions.
+3. Go to the **Actions** tab. If the "Deploy to GitHub Pages" workflow hasn't run yet, click it → **Run workflow** → main.
 
 After ~1 minute your game is live at:
 
 ```
-https://<your-username>.github.io/gamejam/games/rocket-racer/
+https://<you>.github.io/<your-game>/
 ```
 
-Open it. If you hit a 404, double-check:
-- Pages source is set to "GitHub Actions" (not "Deploy from a branch")
-- The workflow run succeeded (green check in Actions tab)
-- You're browsing with a trailing slash on the folder
+**Every subsequent push** redeploys automatically. No further button-clicking required.
 
-## 6. Register your game in the main repo
+## 6. Submit to the jam
 
-Sync with upstream first to avoid `games.json` conflicts:
+You do **not** need to clone the main repo. GitHub lets you edit any file in-browser and it auto-forks on save.
 
-```bash
-git fetch upstream
-git merge upstream/main
-```
-
-Add your entry to `games.json`:
+1. Open https://github.com/CallumHYoung/gamejam/blob/main/games.json
+2. Click the **pencil icon** (top-right of the file view). GitHub will prompt "Fork this repository" — accept it.
+3. Add your entry to the `games` array, after the last existing entry:
 
 ```json
 {
@@ -122,8 +106,8 @@ Add your entry to `games.json`:
   "title": "Rocket Racer",
   "author": "Your Name",
   "description": "One-line pitch people will remember.",
-  "url": "https://<your-username>.github.io/gamejam/games/rocket-racer/",
-  "repo": "<your-username>/gamejam",
+  "url": "https://<you>.github.io/rocket-racer/",
+  "repo": "<you>/rocket-racer",
   "thumbnail": "thumbnails/rocket-racer.png",
   "type": "3d",
   "tags": ["platformer", "three.js"],
@@ -132,17 +116,10 @@ Add your entry to `games.json`:
 }
 ```
 
-Also drop a 256×256+ screenshot at `thumbnails/rocket-racer.png`.
+4. Scroll to the bottom, pick **"Create a new branch for this commit and start a pull request"**, give the branch a name (e.g. `add-rocket-racer`), click **Propose changes**.
+5. On the next screen, click **Create pull request**.
 
-Commit, push, and open a PR against `CallumHYoung/gamejam`:
-
-```bash
-git checkout -b add-rocket-racer
-git add games.json thumbnails/rocket-racer.png
-git commit -m "Register rocket-racer"
-git push -u origin add-rocket-racer
-# then click the PR link GitHub prints, or go to your fork and click "Compare & pull request"
-```
+To add a thumbnail in the same PR, after step 4 switch to your new branch on your fork, navigate to `thumbnails/`, click **Add file → Upload files**, drop in `<your-id>.png` (256×256 or larger), and commit to the same branch. The PR will update automatically.
 
 **Field reference:**
 
@@ -153,7 +130,7 @@ git push -u origin add-rocket-racer
 | `author`      | yes      | Your name or handle                                                         |
 | `description` | yes      | One-line pitch                                                              |
 | `url`         | yes      | Absolute URL to your game's `index.html`                                    |
-| `repo`        | no       | `owner/name` — **enables live status on the showcase card**                 |
+| `repo`        | no       | `<owner>/<name>` of your **game repo** — enables live status on your card   |
 | `thumbnail`   | yes      | Path relative to main repo, e.g. `thumbnails/<id>.png`                      |
 | `type`        | yes      | `"2d"` or `"3d"`                                                            |
 | `tags`        | no       | Array of short strings                                                      |
@@ -162,7 +139,7 @@ git push -u origin add-rocket-racer
 
 ## 7. Iterating on your game
 
-Every push to your fork's `main` branch redeploys your Pages site automatically. **You do not need to open a new PR to the main repo** to update your game — your URL is stable, your showcase card just picks up the new deploy.
+Every push to your game repo's `main` branch redeploys your Pages site automatically. **You do not need a new PR to the main repo** to update your game — your URL is stable, and the showcase pulls live status from GitHub's API every time someone loads the page.
 
 You only need a new PR to the main repo when:
 - You change your `games.json` entry (e.g. flip `status` from `wip` to `ready`)
@@ -170,27 +147,32 @@ You only need a new PR to the main repo when:
 
 ## 8. What the showcase shows about your game
 
-On `callumhyoung.github.io/gamejam/`, your card displays:
+On https://callumhyoung.github.io/gamejam/, your card displays:
 
 - **Thumbnail + title + description + tags** — from `games.json`
 - **Type badge** (2D/3D) — top-right
 - **Status badge** (WIP/READY) — top-left (if you set `status`)
-- **Multiplayer badge** — bottom-right (if you set `multiplayer: true`)
-- **Last-updated time** (e.g. "updated 4m ago") — pulled live from GitHub API via `repo`
-- **Deploy status** (deployed / deploying… / deploy failed) — pulled live from your fork's Pages workflow, links to the run
+- **Multiplayer badge** — bottom-right (if you set `"multiplayer": true`)
+- **Last-updated time** (e.g. "updated 4m ago") — pulled live from the GitHub API via `repo`
+- **Deploy status** (deployed / deploying… / deploy failed) — pulled live from your game repo's Pages workflow, links to the run
 
 Clicking the card opens your game in a new tab. Clicking the deploy badge opens the workflow run so you can debug failures.
 
+---
+
 ## Troubleshooting
 
-**My game 404s on `<me>.github.io/gamejam/games/<id>/`**
-Pages source must be "GitHub Actions", and the workflow must have run at least once successfully. Check the Actions tab.
+**My game 404s on `<me>.github.io/<game>/`**
+Pages source must be "GitHub Actions". Check the Actions tab — the workflow needs at least one successful green run. If you see a red X, click into it and read the logs.
 
-**`games.json` merge conflicts**
-Run `git fetch upstream && git merge upstream/main` on your PR branch, resolve the conflict (usually just re-add your entry at the end of the array), commit, push.
+**Deploy badge says "deploy failed" on the showcase**
+Click the badge — it links straight to your failed workflow run. Most common cause: you deleted the workflow file or broke its YAML.
 
 **Portal to another friend's game doesn't work**
-Their entry has to be in the main `games.json` on `main`. Until merged, hardcode a fallback list in your game pointing at URLs you know.
+Their entry has to be in the main repo's `games.json`. Until merged, edit `portal.js` in your game and add them to `FALLBACK_GAMES` — the helper will use that list when the registry is unreachable.
 
-**GitHub API rate limits hit (status says "status unavailable")**
-The showcase uses the unauthenticated API (60 req/hour per IP). Results are cached for 5 minutes in your browser. Hit **Refresh status** sparingly.
+**GitHub API rate limits hit (showcase says "status unavailable")**
+The showcase uses the unauthenticated GitHub API (60 req/hour per IP). Results are cached for 5 minutes in your browser. Hit **Refresh status** sparingly.
+
+**I accidentally forked the main repo instead of using the template**
+No harm done — just delete the fork and use the template link instead: https://github.com/CallumHYoung/gamejam-starter

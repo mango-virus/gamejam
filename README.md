@@ -2,19 +2,22 @@
 
 A browser game jam where every entry is stitched together by portals. Players travel from one game to the next without leaving their browser.
 
-**Live showcase:** https://callumhyoung.github.io/gamejam/
+- **Live showcase:** https://callumhyoung.github.io/gamejam/
+- **Starter template:** https://github.com/CallumHYoung/gamejam-starter
+
+This repo is the **registry, build spec, and showcase website**. It is not where games live — each participant hosts their own game in their own repo created from the starter template, and submits a PR here adding themselves to `games.json`.
 
 ## Participating
 
-→ **Start here: [`GETTING_STARTED.md`](GETTING_STARTED.md)** — the full fork-to-PR walkthrough.
+→ **Start here: [`GETTING_STARTED.md`](GETTING_STARTED.md)** — the full template-to-PR walkthrough.
 
 The short version:
 
-1. Fork this repo.
-2. Build your game inside `games/<your-id>/` on your fork. Feed [`SPEC.md`](SPEC.md) to your coding agent for the build rules and portal protocol.
-3. Enable GitHub Pages on your fork (Settings → Pages → Source: GitHub Actions). Your game goes live at `https://<you>.github.io/gamejam/games/<your-id>/`.
-4. Open a PR against this repo adding your entry to [`games.json`](games.json) with your deployed URL and a thumbnail.
-5. Updates to your game just require pushing to your fork — the showcase picks up the new deploy automatically.
+1. Go to the [starter template](https://github.com/CallumHYoung/gamejam-starter) and click **"Use this template"** to create your own game repo.
+2. Clone your new repo, feed [`SPEC.md`](SPEC.md) into your coding agent, build your game.
+3. Push — the included workflow auto-deploys to `https://<you>.github.io/<your-game>/`.
+4. Edit [`games.json`](games.json) in the GitHub web UI (GitHub auto-forks on save), add your entry, open a PR.
+5. Iterating on your game afterwards is push-only — no new PR needed unless your `games.json` entry or thumbnail changes.
 
 ## Running the showcase site locally
 
