@@ -1,0 +1,19 @@
+{
+  "jam": {
+    "name": "Vibe Coding Game Jam",
+    "startDate": "2026-04-14",
+    "homeUrl": "https://TODO-your-jam-site.example.com"
+  },
+  "games": [
+    {
+      "id": "example",
+      "title": "Example Game",
+      "author": "Your Name",
+      "description": "One-line pitch.",
+      "url": "https://example.com/my-game/",
+      "thumbnail": "thumbnails/example.png",
+      "type": "3d",
+      "tags": ["platformer", "three.js"]
+    }
+  ]
+}
