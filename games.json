@@ -9,11 +9,14 @@
       "id": "example",
       "title": "Example Game",
       "author": "Your Name",
-      "description": "One-line pitch.",
-      "url": "https://example.com/my-game/",
+      "description": "One-line pitch people will remember.",
+      "url": "https://yourname.github.io/gamejam/games/example/",
+      "repo": "yourname/gamejam",
       "thumbnail": "thumbnails/example.png",
       "type": "3d",
-      "tags": ["platformer", "three.js"]
+      "tags": ["platformer", "three.js"],
+      "status": "wip",
+      "multiplayer": false
     }
   ]
 }

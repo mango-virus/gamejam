@@ -237,6 +237,40 @@ h2 {
   animation: h2-shimmer 8s linear infinite;
 }
 
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.section-head h2 { margin-bottom: 0; }
+
+#refresh-status {
+  background: var(--card);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+#refresh-status:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 20px rgba(198, 75, 255, 0.4);
+}
+
+#refresh-status:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
 @keyframes h2-shimmer {
   0%   { background-position: 0% 50%; }
   100% { background-position: 300% 50%; }
@@ -327,6 +361,97 @@ h2 {
   color: #4fff9e;
   border-color: #4fff9e;
   background: rgba(0,0,0,0.6);
+}
+
+.card .badge-status {
+  top: 0.6rem;
+  right: auto;
+  left: 0.6rem;
+}
+
+.card .badge-status-wip {
+  color: #ffd84f;
+  border-color: #ffd84f;
+}
+
+.card .badge-status-ready {
+  color: #4fff9e;
+  border-color: #4fff9e;
+}
+
+.card .status {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.72rem;
+  color: var(--muted);
+  flex-wrap: wrap;
+  min-height: 1.2em;
+}
+
+.status-loading {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.status-commit {
+  opacity: 0.85;
+}
+
+.status-deploy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--muted);
+}
+
+.status-deploy::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+}
+
+.status-deploy.status-success { color: #4fff9e; border-color: rgba(79,255,158,0.6); }
+.status-deploy.status-success::before { background: #4fff9e; box-shadow: 0 0 6px #4fff9e; }
+
+.status-deploy.status-failure { color: #ff6b6b; border-color: rgba(255,107,107,0.6); }
+.status-deploy.status-failure::before { background: #ff6b6b; box-shadow: 0 0 6px #ff6b6b; }
+
+.status-deploy.status-cancelled,
+.status-deploy.status-skipped { color: var(--muted); }
+
+.status-deploy.status-in_progress,
+.status-deploy.status-queued,
+.status-deploy.status-waiting {
+  color: #ffd84f;
+  border-color: rgba(255,216,79,0.6);
+}
+
+.status-deploy.status-in_progress::before,
+.status-deploy.status-queued::before,
+.status-deploy.status-waiting::before {
+  background: #ffd84f;
+  box-shadow: 0 0 6px #ffd84f;
+  animation: status-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% { opacity: 0.4; }
+  50%      { opacity: 1; }
+}
+
+.empty {
+  color: var(--muted);
+  grid-column: 1 / -1;
 }
 
 .card .thumb-wrap { position: relative; }

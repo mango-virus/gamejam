@@ -12,7 +12,8 @@
   <h1 class="sr-only">Ordinary Game Jam #1</h1>
   <p class="tagline">Browser games, built with agents, stitched together by portals.</p>
   <nav>
-    <a href="SPEC.md">Build spec</a>
+    <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">Get started</a>
+    <a href="https://github.com/CallumHYoung/gamejam/blob/main/SPEC.md">Build spec</a>
     <a href="https://github.com/CallumHYoung/gamejam">Repo</a>
     <a href="#games">Games</a>
   </nav>
@@ -20,17 +21,20 @@
 
 <main>
   <section id="games">
-    <h2>The jam</h2>
+    <div class="section-head">
+      <h2>The jam</h2>
+      <button id="refresh-status" type="button" title="Refresh live status from GitHub">Refresh status</button>
+    </div>
     <div id="grid" class="grid">Loading games…</div>
   </section>
 
   <section id="how">
     <h2>How it works</h2>
     <ol>
-      <li>Read the <a href="SPEC.md">build spec</a> and feed it to your favorite coding agent.</li>
-      <li>Build a browser game on any stack. Deploy it anywhere static.</li>
-      <li>Implement the Portal Protocol so players can travel between every game.</li>
-      <li>Open a PR adding your entry to <code>games.json</code>.</li>
+      <li><a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">Fork this repo</a> and clone your fork.</li>
+      <li>Build your game inside <code>games/&lt;your-id&gt;/</code>. Feed <a href="https://github.com/CallumHYoung/gamejam/blob/main/SPEC.md">SPEC.md</a> into your agent for the rules and portal protocol.</li>
+      <li>Enable GitHub Pages on your fork — your game goes live at <code>&lt;you&gt;.github.io/gamejam/games/&lt;your-id&gt;/</code>.</li>
+      <li>Open a PR adding your entry to <code>games.json</code>. The showcase pulls live deploy status from your fork.</li>
     </ol>
   </section>
 </main>
