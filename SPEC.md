@@ -57,7 +57,7 @@ function sendPlayerThroughPortal(targetUrl, player) {
 Fetch the shared registry and pick a destination that isn't you:
 
 ```js
-const REGISTRY_URL = 'https://TODO-your-jam-site.example.com/games.json';
+const REGISTRY_URL = 'https://callumhyoung.github.io/gamejam/games.json';
 
 async function pickPortalTarget() {
   const reg = await fetch(REGISTRY_URL).then(r => r.json());
