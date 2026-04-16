@@ -96,6 +96,19 @@
       "tags": ["multiplayer", "cow sim"],
       "status": "wip",
       "multiplayer": true
+    },
+    {
+      "id": "sunset-hoops",
+      "title": "Sunset Hoops",
+      "author": "Joel",
+      "description": "Shoot hoops shittily",
+      "url": "https://jmataway.github.io/jamegam/",
+      "repo": "jmataway/jamegam",
+      "thumbnail": "https://jmataway.github.io/jamegam/thumbnail.png",
+      "type": "3d",
+      "tags": ["hoops", "three.js"],
+      "status": "wip",
+      "multiplayer": true
     }
 
   ] 
