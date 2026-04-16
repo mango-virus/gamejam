@@ -84,6 +84,20 @@
       "tags": ["three.js", "fps", "tactical", "shooter", "5v5", "trystero"],
       "status": "wip",
       "multiplayer": true
+    },
+    {
+      "id": "milk-abduction",
+      "title": "Milk Abduction",
+      "author": "prez",
+      "description": "real life cow sim",
+      "url": "https://prstnv.github.io/milk-abduction/",
+      "repo": "prstnv/milk-abduction",
+      "type": "3d",
+      "tags": ["multiplayer", "cow sim"],
+      "status": "wip",
+      "multiplayer": true
     }
-  ]
+
+  ] 
+
 }
