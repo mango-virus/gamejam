@@ -85,18 +85,19 @@
       "status": "wip",
       "multiplayer": true
     },
-    {
-      "id": "milk-abduction",
-      "title": "Milk Abduction",
-      "author": "prez",
-      "description": "real life cow sim",
-      "url": "https://prstnv.github.io/milk-abduction/",
-      "repo": "prstnv/milk-abduction",
-      "type": "3d",
-      "tags": ["multiplayer", "cow sim"],
-      "status": "wip",
-      "multiplayer": true
-    },
+     {
+       "id": "milk-abduction",
+       "title": "Milk Abduction",
+       "author": "prez",
+       "description": "real life cow sim",
+       "url": "https://prstnv.github.io/milk-abduction/",
+       "repo": "prstnv/milk-abduction",
+       "thumbnail": "https://prstnv.github.io/milk-abduction/thumbnail.png",
+       "type": "3d",
+       "tags": ["multiplayer", "cow sim"],
+       "status": "wip",
+       "multiplayer": true
+     },
     {
       "id": "sunset-hoops",
       "title": "Sunset Hoops",
