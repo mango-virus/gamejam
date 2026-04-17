@@ -613,6 +613,173 @@ footer a:hover { color: var(--accent2); }
   font-style: italic;
 }
 
+/* ---------- Portal network ---------- */
+
+.network-section { margin-bottom: 4rem; }
+
+.network-sub {
+  color: var(--muted);
+  margin: -0.5rem 0 1.25rem;
+  font-size: 0.95rem;
+  max-width: 720px;
+}
+
+.network-viz {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.1rem 1.1rem 0.75rem;
+  margin-bottom: 1.25rem;
+  background:
+    radial-gradient(ellipse at top, rgba(198,75,255,0.14), transparent 65%),
+    linear-gradient(180deg, rgba(12,4,30,0.85), rgba(24,10,56,0.85));
+  box-shadow: inset 0 0 0 1px rgba(198,75,255,0.12);
+  overflow: hidden;
+}
+
+.network-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 360px;
+  filter: drop-shadow(0 0 14px rgba(198,75,255,0.28));
+}
+
+.network-arcs path {
+  animation: network-arc-flow 6.5s ease-in-out infinite;
+}
+.network-arcs path:nth-child(1) { animation-delay: 0s;   }
+.network-arcs path:nth-child(2) { animation-delay: 0.7s; }
+.network-arcs path:nth-child(3) { animation-delay: 1.4s; }
+.network-arcs path:nth-child(4) { animation-delay: 2.1s; }
+.network-arcs path:nth-child(5) { animation-delay: 2.8s; }
+.network-arcs path:nth-child(6) { animation-delay: 3.5s; }
+.network-arcs path:nth-child(7) { animation-delay: 4.2s; }
+
+@keyframes network-arc-flow {
+  0%, 100% { opacity: 0.4; stroke-width: 1.4; }
+  50%      { opacity: 0.9; stroke-width: 2.1; }
+}
+
+.node-ring,
+.node-ring-inner {
+  transform-origin: center;
+  animation: network-ring-pulse 3.2s ease-in-out infinite;
+}
+
+.node-ring-inner { animation-delay: 0.6s; animation-duration: 4s; }
+
+.network-nodes > g:nth-child(1) .node-ring { animation-delay: 0s;   }
+.network-nodes > g:nth-child(2) .node-ring { animation-delay: 0.5s; }
+.network-nodes > g:nth-child(3) .node-ring { animation-delay: 1.0s; }
+.network-nodes > g:nth-child(4) .node-ring { animation-delay: 1.5s; }
+.network-nodes > g:nth-child(5) .node-ring { animation-delay: 2.0s; }
+
+@keyframes network-ring-pulse {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 0.95; }
+}
+
+.node-core {
+  filter: drop-shadow(0 0 10px rgba(255, 79, 216, 0.7));
+}
+
+.node-label {
+  fill: #fff;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0;
+  paint-order: stroke;
+  stroke: rgba(28,16,64,0.85);
+  stroke-width: 0.75;
+  pointer-events: none;
+}
+
+.traveler {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.network-legend {
+  display: flex;
+  gap: 1.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0.75rem 0 0.15rem;
+  font-size: 0.82rem;
+  color: var(--muted);
+  border-top: 1px dashed rgba(198,75,255,0.18);
+  margin-top: 0.5rem;
+}
+
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.legend-node-swatch {
+  background: radial-gradient(circle at 30% 30%, #fff, var(--accent2) 60%, #1c1040);
+  box-shadow: 0 0 8px rgba(255,79,216,0.6);
+}
+
+.legend-arc-swatch {
+  width: 24px;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, rgba(198,75,255,0.2), var(--accent2), rgba(198,75,255,0.2));
+  box-shadow: 0 0 6px rgba(255,79,216,0.5);
+}
+
+.legend-traveler-swatch {
+  background: #ffd84f;
+  box-shadow: 0 0 8px rgba(255,216,79,0.9);
+}
+
+.network-rules {
+  padding: 1.4rem 1.6rem 1.3rem;
+  border: 1px solid rgba(198,75,255,0.4);
+  border-radius: 14px;
+  background:
+    radial-gradient(ellipse at top left, rgba(198,75,255,0.14), transparent 70%),
+    var(--card);
+}
+
+.network-rules h3 {
+  margin: 0 0 0.85rem;
+  font-size: 1.15rem;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+}
+
+.network-rules ol {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.network-rules li + li { margin-top: 0.7rem; }
+
+.network-rules li strong {
+  color: var(--fg);
+  margin-right: 0.35rem;
+}
+
+.network-rules li a {
+  color: var(--accent2);
+}
+
+.network-rules li a:hover { color: var(--accent); }
+
 /* ---------- Competitors marquee ---------- */
 
 #competitors h2 { margin-bottom: 0.5rem; }
@@ -1406,6 +1573,10 @@ footer {
   .reveal-unlocked-panel,
   .reveal-card,
   .prize-grand,
-  .prize-grand-inner::before { animation: none !important; }
+  .prize-grand-inner::before,
+  .network-arcs path,
+  .node-ring,
+  .node-ring-inner { animation: none !important; }
   .reveal-door { transition: none !important; }
+  .network-travelers { display: none; }
 }

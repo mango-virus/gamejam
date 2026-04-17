@@ -8,9 +8,10 @@ Paste this entire file into your coding agent (Claude Code, Cursor, etc.) as the
 
 1. **Browser only.** The game must run in a modern desktop browser with zero install. Static hosting (GitHub Pages, Vercel, Netlify, itch.io HTML5) is fine. No backend required.
 2. **One entry point.** `index.html` at the root of whatever URL you submit.
-3. **Portals to other games.** Every game must let the player leave and arrive from another jam game using the shared Portal Protocol below.
-4. **Pick a stack you like.** Three.js, Phaser, plain canvas, Babylon, PlayCanvas, Pixi, raw WebGL — whatever. Keep the bundle reasonable (<20MB ideally).
-5. **Submit by PR.** Add your entry to `jam1.json` in the jam repo and open a pull request. (The `games.json` file is the trial-run archive — a separate portal network, closed to new submissions.)
+3. **Join the network.** Every game must implement the shared Portal Protocol below — players leave through a portal to another jam game, and arrive from others. A game that doesn't portal isn't in the jam.
+4. **Build in public.** Your game repo must be public from the first commit. Half the point of the jam is watching each other's games take shape — push early, push often, don't hide work-in-progress.
+5. **Pick a stack you like.** Three.js, Phaser, plain canvas, Babylon, PlayCanvas, Pixi, raw WebGL — whatever. Keep the bundle reasonable (<20MB ideally).
+6. **Submit by PR.** Add your entry to `jam1.json` in the jam repo and open a pull request. (The `games.json` file is the trial-run archive — a separate portal network, closed to new submissions.)
 
 ---
 

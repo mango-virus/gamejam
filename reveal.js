@@ -1,6 +1,8 @@
 (() => {
-  const REVEAL_AT_DEFAULT = Date.parse('2026-04-17T12:00:00-04:00');
-  const END_AT_DEFAULT = Date.parse('2026-05-23T23:59:00-04:00');
+  // Evaluated in the viewer's local timezone, so everyone on a shared timezone
+  // sees the gate open at the same wallclock moment. No explicit TZ offset.
+  const REVEAL_AT_DEFAULT = new Date(2026, 3, 17, 12, 0, 0).getTime(); // Fri Apr 17, 2026 @ 12:00 PM local
+  const END_AT_DEFAULT   = new Date(2026, 4, 23, 23, 59, 0).getTime(); // Sat May 23, 2026 @ 11:59 PM local
 
   // Theme + mechanic payload, base64-encoded so the reveal is not visible
   // in page source before the gate opens.

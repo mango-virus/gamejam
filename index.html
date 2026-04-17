@@ -18,6 +18,7 @@
   <nav>
     <a href="#schedule">Schedule</a>
     <a href="#prizes">Prizes</a>
+    <a href="#network">Network</a>
     <a href="#competitors">Competitors</a>
     <a href="#games">Games</a>
     <a href="trial.html">Trial archive</a>
@@ -52,7 +53,7 @@
           <div class="reveal-cd-sep">:</div>
           <div class="reveal-cd"><span class="reveal-cd-num" data-cd="seconds">--</span><span class="reveal-cd-lbl">sec</span></div>
         </div>
-        <p class="reveal-unlock-at">Opens <strong>Friday, Apr 17 @ 12:00 PM ET</strong></p>
+        <p class="reveal-unlock-at">Opens <strong>Friday, Apr 17 @ 12:00 PM</strong> (your local time)</p>
         <p class="reveal-ends-at">Submissions due <strong>Saturday, May 23</strong></p>
       </div>
 
@@ -186,6 +187,110 @@
     </div>
     <p class="grid-sub">Real-jam entries only. Warm-up games live in the <a href="trial.html">trial archive</a>.</p>
     <div id="grid" class="grid" data-registry="jam1.json">Loading games…</div>
+  </section>
+
+  <section id="network" class="network-section">
+    <h2>The portal network</h2>
+    <p class="network-sub">Every game in the jam is a node. Portals stitch them into a single walk-through-able world — you step into a glowing ring in one game and arrive in another, no accounts, no server.</p>
+
+    <div class="network-viz">
+      <svg viewBox="0 0 820 320" preserveAspectRatio="xMidYMid meet" class="network-svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="network-arc-grad" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#c64bff" stop-opacity="0.18"/>
+            <stop offset="50%" stop-color="#ff4fd8" stop-opacity="0.75"/>
+            <stop offset="100%" stop-color="#c64bff" stop-opacity="0.18"/>
+          </linearGradient>
+          <radialGradient id="network-node-grad">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="35%" stop-color="#ff4fd8"/>
+            <stop offset="100%" stop-color="#1c1040"/>
+          </radialGradient>
+        </defs>
+
+        <g class="network-arcs" fill="none" stroke="url(#network-arc-grad)" stroke-width="1.5" stroke-linecap="round">
+          <path id="arc-ab" d="M 110 210 Q 160 140 260 90"/>
+          <path id="arc-bc" d="M 260 90  Q 320 160 410 230"/>
+          <path id="arc-cd" d="M 410 230 Q 470 160 570 100"/>
+          <path id="arc-de" d="M 570 100 Q 630 150 720 210"/>
+          <path id="arc-ac" d="M 110 210 Q 260 290 410 230"/>
+          <path id="arc-bd" d="M 260 90  Q 410 30  570 100"/>
+          <path id="arc-ce" d="M 410 230 Q 560 280 720 210"/>
+        </g>
+
+        <g class="network-nodes">
+          <g class="network-node" transform="translate(110 210)">
+            <circle r="28" fill="none" stroke="#ff4fd8" stroke-width="1.5" class="node-ring"/>
+            <circle r="22" fill="none" stroke="#c64bff" stroke-width="1"   class="node-ring-inner"/>
+            <circle r="15" fill="url(#network-node-grad)" class="node-core"/>
+            <text y="5" text-anchor="middle" class="node-label">A</text>
+          </g>
+          <g class="network-node" transform="translate(260 90)">
+            <circle r="28" fill="none" stroke="#ff4fd8" stroke-width="1.5" class="node-ring"/>
+            <circle r="22" fill="none" stroke="#c64bff" stroke-width="1"   class="node-ring-inner"/>
+            <circle r="15" fill="url(#network-node-grad)" class="node-core"/>
+            <text y="5" text-anchor="middle" class="node-label">B</text>
+          </g>
+          <g class="network-node" transform="translate(410 230)">
+            <circle r="28" fill="none" stroke="#ff4fd8" stroke-width="1.5" class="node-ring"/>
+            <circle r="22" fill="none" stroke="#c64bff" stroke-width="1"   class="node-ring-inner"/>
+            <circle r="15" fill="url(#network-node-grad)" class="node-core"/>
+            <text y="5" text-anchor="middle" class="node-label">C</text>
+          </g>
+          <g class="network-node" transform="translate(570 100)">
+            <circle r="28" fill="none" stroke="#ff4fd8" stroke-width="1.5" class="node-ring"/>
+            <circle r="22" fill="none" stroke="#c64bff" stroke-width="1"   class="node-ring-inner"/>
+            <circle r="15" fill="url(#network-node-grad)" class="node-core"/>
+            <text y="5" text-anchor="middle" class="node-label">D</text>
+          </g>
+          <g class="network-node" transform="translate(720 210)">
+            <circle r="28" fill="none" stroke="#ff4fd8" stroke-width="1.5" class="node-ring"/>
+            <circle r="22" fill="none" stroke="#c64bff" stroke-width="1"   class="node-ring-inner"/>
+            <circle r="15" fill="url(#network-node-grad)" class="node-core"/>
+            <text y="5" text-anchor="middle" class="node-label">E</text>
+          </g>
+        </g>
+
+        <g class="network-travelers">
+          <circle r="5" class="traveler" fill="#ffd84f">
+            <animateMotion dur="5.5s" repeatCount="indefinite"><mpath href="#arc-ab"/></animateMotion>
+            <animate attributeName="opacity" dur="5.5s" values="0;1;1;0" keyTimes="0;0.18;0.82;1" repeatCount="indefinite"/>
+          </circle>
+          <circle r="5" class="traveler" fill="#4ff0ff">
+            <animateMotion dur="6.5s" begin="0.8s" repeatCount="indefinite"><mpath href="#arc-cd"/></animateMotion>
+            <animate attributeName="opacity" dur="6.5s" begin="0.8s" values="0;1;1;0" keyTimes="0;0.18;0.82;1" repeatCount="indefinite"/>
+          </circle>
+          <circle r="5" class="traveler" fill="#4fff9e">
+            <animateMotion dur="7s" begin="1.6s" repeatCount="indefinite"><mpath href="#arc-bd"/></animateMotion>
+            <animate attributeName="opacity" dur="7s" begin="1.6s" values="0;1;1;0" keyTimes="0;0.18;0.82;1" repeatCount="indefinite"/>
+          </circle>
+          <circle r="5" class="traveler" fill="#ff4fd8">
+            <animateMotion dur="6s" begin="2.5s" repeatCount="indefinite"><mpath href="#arc-ce"/></animateMotion>
+            <animate attributeName="opacity" dur="6s" begin="2.5s" values="0;1;1;0" keyTimes="0;0.18;0.82;1" repeatCount="indefinite"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="network-legend">
+        <span class="legend-item"><span class="legend-swatch legend-node-swatch"></span>Game</span>
+        <span class="legend-item"><span class="legend-swatch legend-arc-swatch"></span>Portal link</span>
+        <span class="legend-item"><span class="legend-swatch legend-traveler-swatch"></span>Player in transit</span>
+      </div>
+    </div>
+
+    <div class="network-rules">
+      <h3>Entry rules</h3>
+      <ol>
+        <li>
+          <strong>Join the network.</strong>
+          Your submission must be registered in <code>jam1.json</code> and must implement the <a href="https://github.com/CallumHYoung/gamejam/blob/main/SPEC.md">Portal Protocol</a> — players leave through a portal to a random other jam game, and arrive from others. A game that doesn't portal isn't in the jam.
+        </li>
+        <li>
+          <strong>Build in public.</strong>
+          Your game repo must be public from the first commit. Half the fun is watching each other's games take shape, so push early, push often, and let people poke at your code as you go.
+        </li>
+      </ol>
+    </div>
   </section>
 
   <section id="how">
