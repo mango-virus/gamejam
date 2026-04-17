@@ -52,7 +52,7 @@
       "description": "A minimal 3D walking space with glowing pillars and portal travel, built with Three.js.",
       "url": "https://mango-virus.github.io/arena-battler/",
       "repo": "mango-virus/Jam",
-      "thumbnail": "https://mango-virus.github.io/Jam/thumbnail.png",
+      "thumbnail": "https://mango-virus.github.io/arena-battler/thumbnail.png",
       "thumbnailFlipY": true,
       "type": "3d",
       "tags": ["three.js", "3d"],
