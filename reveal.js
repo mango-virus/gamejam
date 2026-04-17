@@ -4,6 +4,41 @@
   const REVEAL_AT_DEFAULT = new Date(2026, 3, 17, 12, 0, 0).getTime(); // Fri Apr 17, 2026 @ 12:00 PM local
   const END_AT_DEFAULT   = new Date(2026, 4, 23, 23, 59, 0).getTime(); // Sat May 23, 2026 @ 11:59 PM local
 
+  // Jam-end countdown in the featured real-jam card — independent of gate state.
+  (function setupEndCountdown() {
+    const container = document.getElementById('jam-end-countdown');
+    if (!container) return;
+    const cd = {
+      days:    container.querySelector('[data-cd="days"]'),
+      hours:   container.querySelector('[data-cd="hours"]'),
+      minutes: container.querySelector('[data-cd="minutes"]'),
+      seconds: container.querySelector('[data-cd="seconds"]'),
+    };
+    const labelEl = container.querySelector('.jam-cd-label');
+    const targetEl = container.querySelector('.jam-cd-target');
+    const pad = n => String(n).padStart(2, '0');
+    function tick() {
+      const diff = END_AT_DEFAULT - Date.now();
+      if (diff <= 0) {
+        container.dataset.state = 'ended';
+        if (labelEl) labelEl.textContent = 'Submissions closed';
+        if (targetEl) targetEl.textContent = 'The jam is over — thanks for playing.';
+        cd.days.textContent = '00';
+        cd.hours.textContent = '00';
+        cd.minutes.textContent = '00';
+        cd.seconds.textContent = '00';
+        return false;
+      }
+      cd.days.textContent    = pad(Math.floor(diff / 86400000));
+      cd.hours.textContent   = pad(Math.floor((diff / 3600000) % 24));
+      cd.minutes.textContent = pad(Math.floor((diff / 60000) % 60));
+      cd.seconds.textContent = pad(Math.floor((diff / 1000) % 60));
+      return true;
+    }
+    tick();
+    const t = setInterval(() => { if (!tick()) clearInterval(t); }, 1000);
+  })();
+
   // Theme + mechanic payload, base64-encoded so the reveal is not visible
   // in page source before the gate opens.
   const PAYLOAD_B64 =
