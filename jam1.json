@@ -18,6 +18,19 @@
       "tags": ["platformer", "three.js"],
       "status": "wip",
       "multiplayer": false
+    },
+    {
+      "id": "lobby",
+      "title": "The Double Doors",
+      "author": "Callum",
+      "description": "a 3D hub with gift pedestals and a portal for every jam game",
+      "url": "https://callumhyoung.github.io/gamejam1-lobby/",
+      "repo": "CallumHYoung/gamejam1-lobby",
+      "thumbnail": "thumbnails/lobby.png",
+      "type": "3d",
+      "tags": ["lobby", "hub", "three.js"],
+      "status": "wip",
+      "multiplayer": false
     }
   ]
 }
