@@ -1,0 +1,23 @@
+{
+  "jam": {
+    "name": "Ordinary Game Jam #1",
+    "startDate": "2026-04-17",
+    "endDate": "2026-05-23",
+    "homeUrl": "https://callumhyoung.github.io/gamejam/"
+  },
+  "games": [
+    {
+      "id": "example",
+      "title": "Example Game",
+      "author": "Your Name",
+      "description": "One-line pitch people will remember.",
+      "url": "https://yourname.github.io/your-game/",
+      "repo": "yourname/your-game",
+      "thumbnail": "thumbnails/example.png",
+      "type": "3d",
+      "tags": ["platformer", "three.js"],
+      "status": "wip",
+      "multiplayer": false
+    }
+  ]
+}

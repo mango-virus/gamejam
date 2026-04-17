@@ -5,13 +5,13 @@ A browser game jam where every entry is stitched together by portals. Players tr
 - **Live showcase:** https://callumhyoung.github.io/gamejam/
 - **Starter template:** https://github.com/CallumHYoung/gamejam-starter
 
-This repo is the **registry, build spec, and showcase website**. It is not where games live — each participant hosts their own game in their own repo created from the starter template, and submits a PR here adding themselves to `games.json`.
+This repo is the **registry, build spec, and showcase website**. It is not where games live — each participant hosts their own game in their own repo created from the starter template, and submits a PR here adding themselves to `jam1.json` (the real-jam registry). The older `games.json` is an archived trial-run network — a standalone portal graph closed to new submissions.
 
 ## Schedule
 
-**Trial run — now → Saturday, Apr 18 @ 9 PM.** Warm-up only. **Do not build your real game yet.** Use this time to get the starter template working, get comfortable building with Claude, mess around, and have fun. Submit something silly.
+**Trial run — now → Friday, Apr 17 @ 12 PM.** Warm-up only. **Do not build your real game yet.** Use this time to get the starter template working, get comfortable building with Claude, mess around, and have fun. Submit something silly. Trial entries live in `games.json` and form a separate portal network (see `trial.html`).
 
-**The real jam — Sunday, Apr 19 → Sunday, May 10.** Three weeks. The **theme** and **mechanic** will both be revealed when the jam starts. Plan your approach after you see them.
+**The real jam — Friday, Apr 17 @ 12 PM → Saturday, May 23.** Five weeks. The **theme** and **mechanic** are sealed behind the gate on the showcase and reveal exactly when the jam starts. Plan your approach after you see them. Submit via `jam1.json`.
 
 **Competitors (trial run):** Adam · Cal · Jason · Joel · Prez · RJ · *and you!*
 
@@ -24,8 +24,8 @@ The short version:
 1. Go to the [starter template](https://github.com/CallumHYoung/gamejam-starter) and click **"Use this template"** to create your own game repo.
 2. Clone your new repo, feed [`SPEC.md`](SPEC.md) into your coding agent, build your game.
 3. Push — the included workflow auto-deploys to `https://<you>.github.io/<your-game>/`.
-4. Edit [`games.json`](games.json) in the GitHub web UI (GitHub auto-forks on save), add your entry, open a PR.
-5. Iterating on your game afterwards is push-only — no new PR needed unless your `games.json` entry or thumbnail changes.
+4. Edit [`jam1.json`](jam1.json) in the GitHub web UI (GitHub auto-forks on save), add your entry, open a PR.
+5. Iterating on your game afterwards is push-only — no new PR needed unless your `jam1.json` entry or thumbnail changes.
 
 ## Running the showcase site locally
 
@@ -40,7 +40,9 @@ python -m http.server 8000
 ## Files
 
 - `index.html`, `style.css`, `app.js`, `fx.js` — the showcase site
-- `games.json` — the registry every game fetches to pick portal destinations
+- `jam1.json` — the real-jam registry every jam game fetches to pick portal destinations
+- `games.json` — the archived trial-run network (standalone, not used by real-jam games)
+- `trial.html` — separate showcase page for the trial-run archive
 - `SPEC.md` — the build spec and portal protocol (the thing friends paste into their agent)
 - `GETTING_STARTED.md` — fork-to-PR walkthrough for participants
 - `thumbnails/` — game card images

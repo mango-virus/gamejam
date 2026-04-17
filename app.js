@@ -112,13 +112,17 @@ async function enhanceCardWithStatus(card, game, force = false) {
 
 async function loadGames(force = false) {
   const grid = document.getElementById('grid');
+  if (!grid) return;
+  const registryUrl = grid.dataset.registry || 'jam1.json';
+  const emptyMessage = grid.dataset.emptyMessage
+    || 'No games submitted yet. Be the first — read <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">GETTING_STARTED.md</a>.';
   try {
-    const res = await fetch('games.json', { cache: 'no-store' });
+    const res = await fetch(registryUrl, { cache: 'no-store' });
     const data = await res.json();
     const games = (data.games || []).filter(g => g.id !== 'example');
 
     if (games.length === 0) {
-      grid.innerHTML = '<p class="empty">No games submitted yet. Be the first — read <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">GETTING_STARTED.md</a>.</p>';
+      grid.innerHTML = `<p class="empty">${emptyMessage}</p>`;
       return;
     }
 
@@ -176,7 +180,7 @@ async function loadGames(force = false) {
       enhanceCardWithStatus(card, g, force);
     }
   } catch (err) {
-    grid.innerHTML = `<p class="empty">Could not load games.json: ${escapeHtml(err.message)}</p>`;
+    grid.innerHTML = `<p class="empty">Could not load ${escapeHtml(registryUrl)}: ${escapeHtml(err.message)}</p>`;
   }
 }
 

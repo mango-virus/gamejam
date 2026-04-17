@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Trial Run Archive — Ordinary Game Jam #1</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-trial">
+<header class="hero hero-compact">
+  <div class="trial-eyebrow">
+    <a class="trial-back" href="index.html">← Back to the jam</a>
+    <span class="phase-badge phase-trial-badge">TRIAL RUN · ARCHIVED</span>
+  </div>
+  <h1 class="trial-title">Trial Run Archive</h1>
+  <p class="tagline">Warm-up entries from before the real jam began.</p>
+  <div class="trial-note">
+    <p>These games were built during the warm-up week and form a <strong>standalone portal network</strong>. They fetch each other via <code>games.json</code> and are not part of the real-jam registry (<code>jam1.json</code>).</p>
+    <p>If you're here looking for the real jam, <a href="index.html">head back to the main showcase</a>.</p>
+  </div>
+</header>
+
+<main>
+  <section id="games">
+    <div class="section-head">
+      <h2>Trial entries</h2>
+      <button id="refresh-status" type="button" title="Refresh live status from GitHub">Refresh status</button>
+    </div>
+    <div
+      id="grid"
+      class="grid"
+      data-registry="games.json"
+      data-empty-message="No trial entries. (Something went wrong loading games.json.)"
+    >Loading games…</div>
+  </section>
+</main>
+
+<footer>
+  <p>Made with vibes. <a href="index.html">Return to the jam →</a></p>
+</footer>
+
+<script src="app.js"></script>
+<script src="fx.js" defer></script>
+</body>
+</html>

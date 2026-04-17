@@ -19,6 +19,7 @@
     <a href="#schedule">Schedule</a>
     <a href="#competitors">Competitors</a>
     <a href="#games">Games</a>
+    <a href="trial.html">Trial archive</a>
     <a href="https://github.com/CallumHYoung/gamejam-starter">Starter template</a>
     <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">Get started</a>
     <a href="https://github.com/CallumHYoung/gamejam/blob/main/SPEC.md">Build spec</a>
@@ -26,12 +27,73 @@
 </header>
 
 <main>
+  <section id="reveal" class="reveal-section" aria-label="Theme and mechanic reveal">
+    <div class="reveal-gate" data-state="sealed">
+      <div class="reveal-grid" aria-hidden="true"></div>
+      <div class="reveal-beam" aria-hidden="true"></div>
+
+      <div class="reveal-sealed-panel">
+        <div class="reveal-seal" aria-hidden="true">
+          <div class="reveal-seal-ring reveal-seal-ring-1"></div>
+          <div class="reveal-seal-ring reveal-seal-ring-2"></div>
+          <div class="reveal-seal-ring reveal-seal-ring-3"></div>
+          <div class="reveal-seal-core">✦</div>
+        </div>
+        <div class="reveal-sealed-label">SEALED · JAM START</div>
+        <h2 class="reveal-sealed-title">Theme &amp; Mechanic</h2>
+        <p class="reveal-sealed-sub">Both reveals are locked. The gate opens exactly when the jam begins.</p>
+        <div class="reveal-countdown" id="reveal-countdown" role="timer" aria-live="polite">
+          <div class="reveal-cd"><span class="reveal-cd-num" data-cd="days">--</span><span class="reveal-cd-lbl">days</span></div>
+          <div class="reveal-cd-sep">:</div>
+          <div class="reveal-cd"><span class="reveal-cd-num" data-cd="hours">--</span><span class="reveal-cd-lbl">hours</span></div>
+          <div class="reveal-cd-sep">:</div>
+          <div class="reveal-cd"><span class="reveal-cd-num" data-cd="minutes">--</span><span class="reveal-cd-lbl">min</span></div>
+          <div class="reveal-cd-sep">:</div>
+          <div class="reveal-cd"><span class="reveal-cd-num" data-cd="seconds">--</span><span class="reveal-cd-lbl">sec</span></div>
+        </div>
+        <p class="reveal-unlock-at">Opens <strong>Friday, Apr 17 @ 12:00 PM ET</strong></p>
+        <p class="reveal-ends-at">Submissions due <strong>Saturday, May 23</strong></p>
+      </div>
+
+      <div class="reveal-doors" aria-hidden="true">
+        <div class="reveal-door reveal-door-left">
+          <div class="reveal-door-trim"></div>
+          <div class="reveal-door-bolt"></div>
+        </div>
+        <div class="reveal-door reveal-door-right">
+          <div class="reveal-door-trim"></div>
+          <div class="reveal-door-bolt"></div>
+        </div>
+      </div>
+
+      <div class="reveal-unlocked-panel" hidden>
+        <div class="reveal-unlocked-head">
+          <span class="reveal-live-badge"><span class="reveal-live-dot"></span>THE JAM IS LIVE</span>
+          <h2 class="reveal-unlocked-title">The Reveal</h2>
+          <p class="reveal-unlocked-sub">One theme. One mechanic. Builds are due <strong>Saturday, May 23</strong>.</p>
+        </div>
+        <div class="reveal-cards">
+          <article class="reveal-card reveal-card-theme">
+            <div class="reveal-card-tag">THEME</div>
+            <h3 class="reveal-card-name" data-slot="theme-name">—</h3>
+            <p class="reveal-card-note">No further explanation. Interpret it however you like.</p>
+          </article>
+          <article class="reveal-card reveal-card-mechanic">
+            <div class="reveal-card-tag">MECHANIC</div>
+            <h3 class="reveal-card-name" data-slot="mech-name">—</h3>
+            <p class="reveal-card-desc" data-slot="mech-desc">—</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="schedule">
     <h2>Schedule</h2>
     <div class="timeline">
       <div class="timeline-phase timeline-trial">
-        <div class="phase-tag">TRIAL RUN · happening now</div>
-        <div class="phase-dates">Now → Saturday, Apr 18 @ 9 PM</div>
+        <div class="phase-tag">TRIAL RUN · wrapping up</div>
+        <div class="phase-dates">Now → Friday, Apr 17 @ 12 PM</div>
         <h3>Warm up and get weird</h3>
         <p>This week is a trial run. <strong>Don't build your real game yet.</strong> Use this time to:</p>
         <ul>
@@ -43,9 +105,9 @@
       </div>
       <div class="timeline-phase timeline-real">
         <div class="phase-tag">THE REAL JAM</div>
-        <div class="phase-dates">Sunday, Apr 19 → Sunday, May 10 · 3 weeks</div>
-        <h3>One theme. One mechanic. Three weeks.</h3>
-        <p>The <strong>theme</strong> and <strong>mechanic</strong> will both be revealed when the jam starts. Start planning after you see them — build something you're proud to show off.</p>
+        <div class="phase-dates">Friday, Apr 17 @ 12 PM → Saturday, May 23</div>
+        <h3>One theme. One mechanic. Five weeks.</h3>
+        <p>The <strong>theme</strong> and <strong>mechanic</strong> are sealed until the gate opens above. Start planning after you see them — build something you're proud to show off.</p>
       </div>
     </div>
   </section>
@@ -86,7 +148,8 @@
       <h2>The jam</h2>
       <button id="refresh-status" type="button" title="Refresh live status from GitHub">Refresh status</button>
     </div>
-    <div id="grid" class="grid">Loading games…</div>
+    <p class="grid-sub">Real-jam entries only. Warm-up games live in the <a href="trial.html">trial archive</a>.</p>
+    <div id="grid" class="grid" data-registry="jam1.json">Loading games…</div>
   </section>
 
   <section id="how">
@@ -95,7 +158,7 @@
       <li>Create your game repo from the <a href="https://github.com/CallumHYoung/gamejam-starter">starter template</a> — click <strong>"Use this template"</strong>. You get a clean repo with the portal protocol, a working demo game, and a Pages deploy workflow pre-wired.</li>
       <li>Feed <a href="https://github.com/CallumHYoung/gamejam/blob/main/SPEC.md">SPEC.md</a> into your coding agent and build your game. Keep <code>portal.js</code> — it's the only hard contract.</li>
       <li>Push. Enable Pages once on your repo (Settings → Pages → GitHub Actions). Your game is live at <code>&lt;you&gt;.github.io/&lt;your-game&gt;/</code> — every future push redeploys automatically.</li>
-      <li>Submit by editing <code>games.json</code> in the GitHub web UI (GitHub auto-forks on save) and opening a PR. Full walkthrough in <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">GETTING_STARTED.md</a>.</li>
+      <li>Submit by editing <code>jam1.json</code> in the GitHub web UI (GitHub auto-forks on save) and opening a PR. Full walkthrough in <a href="https://github.com/CallumHYoung/gamejam/blob/main/GETTING_STARTED.md">GETTING_STARTED.md</a>.</li>
     </ol>
   </section>
 </main>
@@ -106,5 +169,6 @@
 
 <script src="app.js"></script>
 <script src="fx.js" defer></script>
+<script src="reveal.js" defer></script>
 </body>
 </html>

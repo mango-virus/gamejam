@@ -1,8 +1,9 @@
 {
   "jam": {
-    "name": "Ordinary Game Jam #1",
+    "name": "Ordinary Game Jam #1 — Trial Run Archive",
+    "note": "These entries are from the warm-up period. They form a standalone portal network and are NOT the real-jam registry. The real-jam registry is jam1.json.",
     "startDate": "2026-04-14",
-    "homeUrl": "https://callumhyoung.github.io/gamejam/"
+    "homeUrl": "https://callumhyoung.github.io/gamejam/trial.html"
   },
   "games": [
     {

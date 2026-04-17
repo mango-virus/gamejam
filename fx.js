@@ -58,4 +58,11 @@
   setInterval(spawnRocket, 8500);
   setInterval(spawnSparkle, 350);
   setTimeout(spawnRocket, 1500);
+
+  window.jamBurst = function jamBurst() {
+    for (let i = 0; i < 140; i++) setTimeout(spawnConfetti, i * 12);
+    for (let i = 0; i < 60; i++) setTimeout(spawnSparkle, i * 18);
+    setTimeout(spawnRocket, 300);
+    setTimeout(spawnRocket, 900);
+  };
 })();

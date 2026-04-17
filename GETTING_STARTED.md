@@ -11,7 +11,7 @@ Welcome to the **Ordinary Game Jam #1**. This guide takes you from zero to a liv
         │  gamejam-starter (template)│          │  CallumHYoung/gamejam (main)   │
         │  build spec + portal.js    │          │  registry + showcase site      │
         └──────────────┬─────────────┘          └────────────────┬───────────────┘
-          "Use this template"                                    │ PR games.json
+          "Use this template"                                    │ PR jam1.json
                        │                                         │ (web UI, auto-forks)
                        ▼                                         ▼
         ┌───────────────────────────┐           ┌────────────────────────────────┐
@@ -23,7 +23,7 @@ Welcome to the **Ordinary Game Jam #1**. This guide takes you from zero to a liv
 
 **Two repos, two purposes:**
 1. **Your game repo** — created from the starter template. Hosts your game at its own clean URL. You control it entirely.
-2. **The showcase repo** (`CallumHYoung/gamejam`) — the registry (`games.json`), the build spec, the showcase website. You never need to clone this; just open a PR via the GitHub web UI when you're ready to submit.
+2. **The showcase repo** (`CallumHYoung/gamejam`) — the registry (`jam1.json`), the build spec, the showcase website. You never need to clone this; just open a PR via the GitHub web UI when you're ready to submit. (Note: `games.json` also lives here — it's the archived trial-run network and isn't used for real-jam submissions.)
 
 **Why a template and not a fork?** A fork of the main repo would make your GitHub Pages serve a stale mirror of the showcase instead of your game. The template gives you a clean, independent repo whose Pages deploy hosts *only* your game at `https://<you>.github.io/<your-game>/`.
 
@@ -66,7 +66,7 @@ Minimum behaviors your game must implement:
 - If `portal=true`, skip menus and spawn the player in.
 - Have at least one outgoing portal that calls `Portal.sendPlayerThroughPortal`.
 - If `ref` is set, draw a return portal / button pointing back to `ref`.
-- Fetch `https://callumhyoung.github.io/gamejam/games.json` to pick destinations (the helper `Portal.pickPortalTarget()` already does this).
+- Fetch `https://callumhyoung.github.io/gamejam/jam1.json` to pick destinations (the helper `Portal.pickPortalTarget()` already does this).
 
 ## 5. Deploy
 
@@ -96,7 +96,7 @@ https://<you>.github.io/<your-game>/
 
 You do **not** need to clone the main repo. GitHub lets you edit any file in-browser and it auto-forks on save.
 
-1. Open https://github.com/CallumHYoung/gamejam/blob/main/games.json
+1. Open https://github.com/CallumHYoung/gamejam/blob/main/jam1.json
 2. Click the **pencil icon** (top-right of the file view). GitHub will prompt "Fork this repository" — accept it.
 3. Add your entry to the `games` array, after the last existing entry:
 
@@ -142,14 +142,14 @@ To add a thumbnail in the same PR, after step 4 switch to your new branch on you
 Every push to your game repo's `main` branch redeploys your Pages site automatically. **You do not need a new PR to the main repo** to update your game — your URL is stable, and the showcase pulls live status from GitHub's API every time someone loads the page.
 
 You only need a new PR to the main repo when:
-- You change your `games.json` entry (e.g. flip `status` from `wip` to `ready`)
+- You change your `jam1.json` entry (e.g. flip `status` from `wip` to `ready`)
 - You want a new thumbnail
 
 ## 8. What the showcase shows about your game
 
 On https://callumhyoung.github.io/gamejam/, your card displays:
 
-- **Thumbnail + title + description + tags** — from `games.json`
+- **Thumbnail + title + description + tags** — from `jam1.json`
 - **Type badge** (2D/3D) — top-right
 - **Status badge** (WIP/READY) — top-left (if you set `status`)
 - **Multiplayer badge** — bottom-right (if you set `"multiplayer": true`)
@@ -169,7 +169,7 @@ Pages source must be "GitHub Actions". Check the Actions tab — the workflow ne
 Click the badge — it links straight to your failed workflow run. Most common cause: you deleted the workflow file or broke its YAML.
 
 **Portal to another friend's game doesn't work**
-Their entry has to be in the main repo's `games.json`. Until merged, edit `portal.js` in your game and add them to `FALLBACK_GAMES` — the helper will use that list when the registry is unreachable.
+Their entry has to be in the main repo's `jam1.json`. Until merged, edit `portal.js` in your game and add them to `FALLBACK_GAMES` — the helper will use that list when the registry is unreachable.
 
 **GitHub API rate limits hit (showcase says "status unavailable")**
 The showcase uses the unauthenticated GitHub API (60 req/hour per IP). Results are cached for 5 minutes in your browser. Hit **Refresh status** sparingly.

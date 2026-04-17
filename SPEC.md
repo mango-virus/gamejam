@@ -10,7 +10,7 @@ Paste this entire file into your coding agent (Claude Code, Cursor, etc.) as the
 2. **One entry point.** `index.html` at the root of whatever URL you submit.
 3. **Portals to other games.** Every game must let the player leave and arrive from another jam game using the shared Portal Protocol below.
 4. **Pick a stack you like.** Three.js, Phaser, plain canvas, Babylon, PlayCanvas, Pixi, raw WebGL — whatever. Keep the bundle reasonable (<20MB ideally).
-5. **Submit by PR.** Add your entry to `games.json` in the jam repo and open a pull request.
+5. **Submit by PR.** Add your entry to `jam1.json` in the jam repo and open a pull request. (The `games.json` file is the trial-run archive — a separate portal network, closed to new submissions.)
 
 ---
 
@@ -57,7 +57,7 @@ function sendPlayerThroughPortal(targetUrl, player) {
 Fetch the shared registry and pick a destination that isn't you:
 
 ```js
-const REGISTRY_URL = 'https://callumhyoung.github.io/gamejam/games.json';
+const REGISTRY_URL = 'https://callumhyoung.github.io/gamejam/jam1.json';
 
 async function pickPortalTarget() {
   const reg = await fetch(REGISTRY_URL).then(r => r.json());
@@ -65,6 +65,8 @@ async function pickPortalTarget() {
   return others[Math.floor(Math.random() * others.length)];
 }
 ```
+
+> **Two registries:** `jam1.json` is the real jam. `games.json` is the archived trial-run network and is not used by real-jam games.
 
 You can also hardcode a fallback list in case the registry is down.
 
@@ -79,7 +81,7 @@ If `ref` is present in the incoming URL, spawn a second portal that sends the pl
 If your game is 3D, the portal is a **physical object in the world** — a ring, door, glowing archway, whatever fits your aesthetic. When the player's bounding box intersects it, trigger the redirect.
 
 Minimum:
-- Portal is clearly visible and labeled with the destination game's title (fetched from `games.json`).
+- Portal is clearly visible and labeled with the destination game's title (fetched from `jam1.json`).
 - Small "preloader" effect is nice: start fetching the target URL when the player gets close.
 - If `ref` is set, also render a return portal near the spawn point.
 
@@ -101,7 +103,7 @@ if (player.position.distanceTo(portal.position) < 2) {
 If your game is 2D, you have more flexibility. Pick one:
 - A door/warp tile the player walks onto.
 - A button/menu item labeled "Travel to another world".
-- A pause-menu list of all jam games (pulled live from `games.json`).
+- A pause-menu list of all jam games (pulled live from `jam1.json`).
 
 Whatever it is, make it discoverable within the first minute of play.
 
@@ -177,9 +179,9 @@ If you and another jam participant want players in Game A to *see* players curre
 - [ ] Reads `portal`, `username`, `color`, `ref` from URL params.
 - [ ] Has at least one outgoing portal that calls `sendPlayerThroughPortal`.
 - [ ] If `ref` is set, shows a return portal / return button.
-- [ ] Entry added to `games.json` via PR with: `id`, `title`, `author`, `description`, `url`, `thumbnail`, `type` (`2d` or `3d`), `tags`.
+- [ ] Entry added to `jam1.json` via PR with: `id`, `title`, `author`, `description`, `url`, `thumbnail`, `type` (`2d` or `3d`), `tags`.
 - [ ] 256×256 (or larger) thumbnail image committed to `thumbnails/<id>.png`.
-- [ ] (Optional) If multiplayer, add `"multiplayer": true` to your `games.json` entry so the showcase site can badge it.
+- [ ] (Optional) If multiplayer, add `"multiplayer": true` to your `jam1.json` entry so the showcase site can badge it.
 
 ---
 
@@ -192,6 +194,6 @@ If you and another jam participant want players in Game A to *see* players curre
 > 4. Pick a stack and theme, then build something small but fun — favor one polished mechanic over sprawl.
 > 5. Multiplayer is optional and must use a static-hosting-compatible service (PlayroomKit, Trystero, PartyKit, Firebase, Supabase) — no custom backend. Do not add multiplayer unless you have time after the portal loop works.
 > 6. Test the portal in/out flow with two fake registry entries before declaring done.
-> 7. When finished, write the `games.json` entry and a short README with the deploy URL.
+> 7. When finished, write the `jam1.json` entry and a short README with the deploy URL.
 >
 > Do not skip the portal protocol. It is the whole point of the jam.
