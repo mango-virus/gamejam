@@ -31,19 +31,19 @@
       "tags": ["lobby", "hub", "three.js"],
       "status": "wip",
       "multiplayer": false
+    },
+    {
+      "id": "rjprkr-3d-starter",
+      "title": "3-D Portal Starter",
+      "author": "rjprkr-cloud",
+      "description": "Three.js 3-D starter with glowing portals and P2P multiplayer.",
+      "url": "https://rjprkr-cloud.github.io/Official-Game-Jam/",
+      "repo": "rjprkr-cloud/Official-Game-Jam",
+      "thumbnail": "thumbnails/rjprkr-3d-starter.png",
+      "type": "3d",
+      "tags": ["three.js", "multiplayer"],
+      "status": "wip",
+      "multiplayer": true
     }
   ]
-}
-{
-  "id": "rjprkr-3d-starter",
-  "title": "3-D Portal Starter",
-  "author": "rjprkr-cloud",
-  "description": "Three.js 3-D starter with glowing portals and P2P multiplayer.",
-  "url": "https://rjprkr-cloud.github.io/Official-Game-Jam/",
-  "repo": "rjprkr-cloud/Official-Game-Jam",
-  "thumbnail": "thumbnails/rjprkr-3d-starter.png",
-  "type": "3d",
-  "tags": ["three.js", "multiplayer"],
-  "status": "wip",
-  "multiplayer": true
 }
