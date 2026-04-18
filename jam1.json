@@ -7,15 +7,15 @@
   },
   "games": [
     {
-      "id": "Logans Game",
-      "title": "Fortune Fallacy",
-      "author": "Logan Konjevich",
-      "description": "Dice Roguelike with Triple Meaning",
-      "url": "https://https://strokacola.github.io/FortuneFallacy/",
-      "repo": "strokacola/FortuneFallacy",
+      "id": "example",
+      "title": "Example Game",
+      "author": "Your Name",
+      "description": "One-line pitch people will remember.",
+      "url": "https://yourname.github.io/your-game/",
+      "repo": "yourname/your-game",
       "thumbnail": "thumbnails/example.png",
       "type": "2d",
-      "tags": ["Roguelike", "three.js"],
+      "tags": ["platformer", "three.js"],
       "status": "wip",
       "multiplayer": false
     },
@@ -44,6 +44,19 @@
       "tags": ["three.js", "multiplayer"],
       "status": "wip",
       "multiplayer": true
-    }
+    },
+        {
+      "id": "Logans Game",
+      "title": "Fortune Fallacy",
+      "author": "Logan Konjevich",
+      "description": "Dice Roguelike with Triple Meaning",
+      "url": "https://strokacola.github.io/FortuneFallacy/",
+      "repo": "strokacola/FortuneFallacy",
+      "thumbnail": "thumbnails/example.png",
+      "type": "2d",
+      "tags": ["Roguelike", "three.js"],
+      "status": "wip",
+      "multiplayer": false
+    },
   ]
 }
