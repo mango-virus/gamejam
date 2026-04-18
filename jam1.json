@@ -57,6 +57,19 @@
       "tags": ["Roguelike", "three.js"],
       "status": "wip",
       "multiplayer": false
+    },
+    {
+      "id": "rpg",
+      "title": "R.P.G.",
+      "author": "luuen",
+      "description": "RACE YOUR WAY THROUGH THE DUNGEON AGAINST YOUR OPPONENT TO ACQUIRE THE FINAL WEAPON TO BLAST YOUR WAY TO VICTORY",
+      "url": "https://luuen.github.io/RPG/",
+      "repo": "luuen/RPG"
+      "thumbnail": "https://luuen.github.io/RPG/thumbnails/rpg.png",
+      "type": "2d",
+      "tags": ["action", "dungeon", "brawler", "roguelite", "rpg"]
+      "status": "wip",
+      "multiplayer": true
     }
   ]
 }
