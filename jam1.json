@@ -70,6 +70,18 @@
       "tags": ["action", "dungeon", "brawler", "roguelite", "rpg"],
       "status": "wip",
       "multiplayer": true
-    }
+    },
+    {
+  "id": "downward",
+  "title": "Downward",
+  "author": "Prez",
+  "description": "A game about descent, and the meaning you find on the way up.",
+  "url": "https://prstnv.github.io/jammy-pwez/",
+  "repo": "prstnv/jammy-pwez",
+  "thumbnail": "https://prstnv.github.io/jammy-pwez/thumbnail.png",
+  "type": "3d",
+  "tags": ["Platformer", "Single Player", "AAA"],
+  "status": "wip"
+}
   ]
 }
