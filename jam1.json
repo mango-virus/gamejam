@@ -65,7 +65,7 @@
       "description": "RACE YOUR WAY THROUGH THE DUNGEON AGAINST YOUR OPPONENT TO ACQUIRE THE FINAL WEAPON TO BLAST YOUR WAY TO VICTORY",
       "url": "https://luuen.github.io/RPG/",
       "repo": "luuen/RPG",
-      "thumbnail": "https://luuen.github.io/RPG/thumbnails/rpg.png",
+      "thumbnail": "https://luuen.github.io/RPG/jam/thumbnails/RPG.png",
       "type": "2d",
       "tags": ["action", "dungeon", "brawler", "roguelite", "rpg"],
       "status": "wip",
